@@ -32,9 +32,7 @@ import software.amazon.awssdk.regions.Region;
 import software.amazon.awssdk.services.s3.S3Client;
 import software.amazon.awssdk.services.s3.presigner.S3Presigner;
 
-/**
- * @author wxq
- */
+/** @author wxq */
 @Configuration
 @EnableConfigurationProperties(ObjectStorageProperties.class)
 @ConditionalOnClass(S3Client.class)
@@ -57,8 +55,8 @@ public class ObjectStorageConfiguration {
   @Bean
   @ConditionalOnMissingBean
   public AwsCredentials awsCredentials() {
-    return AwsBasicCredentials
-        .create(this.properties.getAccessKeyId(), this.properties.getSecretAccessKey());
+    return AwsBasicCredentials.create(
+        this.properties.getAccessKeyId(), this.properties.getSecretAccessKey());
   }
 
   @Bean
@@ -73,8 +71,12 @@ public class ObjectStorageConfiguration {
     final Region region = this.resolveRegion();
     final URI endpoint = this.resolveEndpoint();
 
-    S3Client s3Client = S3Client.builder().region(region).endpointOverride(endpoint)
-        .credentialsProvider(awsCredentialsProvider).build();
+    S3Client s3Client =
+        S3Client.builder()
+            .region(region)
+            .endpointOverride(endpoint)
+            .credentialsProvider(awsCredentialsProvider)
+            .build();
     return s3Client;
   }
 
@@ -84,9 +86,12 @@ public class ObjectStorageConfiguration {
     final Region region = this.resolveRegion();
     final URI endpoint = this.resolveEndpoint();
 
-    S3Presigner s3Presigner = S3Presigner.builder().region(region).endpointOverride(endpoint)
-        .credentialsProvider(awsCredentialsProvider).build();
+    S3Presigner s3Presigner =
+        S3Presigner.builder()
+            .region(region)
+            .endpointOverride(endpoint)
+            .credentialsProvider(awsCredentialsProvider)
+            .build();
     return s3Presigner;
   }
-
 }

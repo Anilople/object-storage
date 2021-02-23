@@ -31,29 +31,19 @@ import software.amazon.awssdk.regions.Region;
 @ConfigurationProperties(prefix = "object.storage")
 public class ObjectStorageProperties {
 
-  /**
-   * Enable Object Storage auto configure, the default value is true.
-   */
+  /** Enable Object Storage auto configure, the default value is true. */
   private boolean enabled = true;
 
-  /**
-   * @see Region
-   */
+  /** @see Region */
   private String region = Region.US_EAST_1.id();
 
-  /**
-   * @see software.amazon.awssdk.services.s3.S3ClientBuilder#endpointOverride(URI)
-   */
+  /** @see software.amazon.awssdk.services.s3.S3ClientBuilder#endpointOverride(URI) */
   private String endpoint;
 
-  /**
-   * @see AwsCredentials#accessKeyId()
-   */
+  /** @see AwsCredentials#accessKeyId() */
   private String accessKeyId;
 
-  /**
-   * @see AwsCredentials#secretAccessKey()
-   */
+  /** @see AwsCredentials#secretAccessKey() */
   private String secretAccessKey;
 
   public boolean isEnabled() {
@@ -95,5 +85,4 @@ public class ObjectStorageProperties {
   public void setSecretAccessKey(String secretAccessKey) {
     this.secretAccessKey = secretAccessKey;
   }
-
 }

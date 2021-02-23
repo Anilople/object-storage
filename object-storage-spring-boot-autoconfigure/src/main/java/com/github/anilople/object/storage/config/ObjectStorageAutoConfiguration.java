@@ -31,6 +31,4 @@ import org.springframework.context.annotation.Import;
 @Configuration
 @ConditionalOnProperty(name = "object.storage.enabled", matchIfMissing = true)
 @Import(value = {ObjectStorageConfiguration.class})
-public class ObjectStorageAutoConfiguration {
-
-}
+public class ObjectStorageAutoConfiguration {}
