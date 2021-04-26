@@ -22,6 +22,7 @@ import java.net.URI;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import software.amazon.awssdk.auth.credentials.AwsCredentials;
 import software.amazon.awssdk.regions.Region;
+import software.amazon.awssdk.regions.providers.DefaultAwsRegionProviderChain;
 
 /**
  * {@link ConfigurationProperties} for Object Storage.
@@ -31,11 +32,17 @@ import software.amazon.awssdk.regions.Region;
 @ConfigurationProperties(prefix = "object.storage")
 public class ObjectStorageProperties {
 
-  /** Enable Object Storage auto configure, the default value is true. */
-  private boolean enabled = true;
+  /** Enable Object Storage auto configure or not. */
+  private Boolean enabled;
 
-  /** @see Region */
-  private String region = Region.US_EAST_1.id();
+  /**
+   * If you don't know which {@link Region} should be use, we recommend use {@link
+   * Region#US_EAST_1}, i.e write <code>us-east-1</code> in config
+   *
+   * @see Region
+   * @see DefaultAwsRegionProviderChain
+   */
+  private String region;
 
   /** @see software.amazon.awssdk.services.s3.S3ClientBuilder#endpointOverride(URI) */
   private String endpoint;
