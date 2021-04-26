@@ -52,7 +52,8 @@ import software.amazon.awssdk.utils.StringUtils;
 @EnableConfigurationProperties(ObjectStorageProperties.class)
 public class ObjectStorageAutoConfiguration {
 
-  private static final Logger LOGGER = LoggerFactory.getLogger(ObjectStorageAutoConfiguration.class);
+  private static final Logger LOGGER =
+      LoggerFactory.getLogger(ObjectStorageAutoConfiguration.class);
 
   private final ObjectStorageProperties properties;
 
@@ -63,15 +64,20 @@ public class ObjectStorageAutoConfiguration {
   @Bean
   @ConditionalOnMissingBean
   public AwsCredentialsProvider awsCredentialsProvider() {
-    if (StringUtils.isNotBlank(this.properties.getAccessKeyId()) && StringUtils.isNotBlank(this.properties.getSecretAccessKey())) {
-      AwsCredentials awsCredentials = AwsBasicCredentials.create(
-          this.properties.getAccessKeyId(), this.properties.getSecretAccessKey());
-      AwsCredentialsProvider awsCredentialsProvider = StaticCredentialsProvider.create(awsCredentials);
+    if (StringUtils.isNotBlank(this.properties.getAccessKeyId())
+        && StringUtils.isNotBlank(this.properties.getSecretAccessKey())) {
+      AwsCredentials awsCredentials =
+          AwsBasicCredentials.create(
+              this.properties.getAccessKeyId(), this.properties.getSecretAccessKey());
+      AwsCredentialsProvider awsCredentialsProvider =
+          StaticCredentialsProvider.create(awsCredentials);
       LOGGER.debug("AwsCredentialsProvider from user's config");
       return awsCredentialsProvider;
     }
 
-    LOGGER.debug("AwsCredentialsProvider from software.amazon.awssdk.auth.credentials.DefaultCredentialsProvider");
+    LOGGER.debug(
+        "AwsCredentialsProvider from"
+            + " software.amazon.awssdk.auth.credentials.DefaultCredentialsProvider");
     return DefaultCredentialsProvider.create();
   }
 
@@ -79,16 +85,20 @@ public class ObjectStorageAutoConfiguration {
   @ConditionalOnMissingBean
   public AwsRegionProvider awsRegionProvider() {
     if (StringUtils.isNotBlank(this.properties.getRegion())) {
-      LOGGER.debug("AwsRegionProvider from user's config region = [{}]", this.properties.getRegion());
+      LOGGER.debug(
+          "AwsRegionProvider from user's config region = [{}]", this.properties.getRegion());
       return () -> Region.of(this.properties.getRegion());
     }
-    LOGGER.debug("AwsRegionProvider from software.amazon.awssdk.regions.providers.DefaultAwsRegionProviderChain");
+    LOGGER.debug(
+        "AwsRegionProvider from"
+            + " software.amazon.awssdk.regions.providers.DefaultAwsRegionProviderChain");
     return DefaultAwsRegionProviderChain.builder().build();
   }
 
   @Bean
   @ConditionalOnMissingBean
-  public S3Client s3Client(AwsRegionProvider awsRegionProvider, AwsCredentialsProvider awsCredentialsProvider) {
+  public S3Client s3Client(
+      AwsRegionProvider awsRegionProvider, AwsCredentialsProvider awsCredentialsProvider) {
     final S3ClientBuilder s3ClientBuilder = S3Client.builder();
 
     s3ClientBuilder.region(awsRegionProvider.getRegion());

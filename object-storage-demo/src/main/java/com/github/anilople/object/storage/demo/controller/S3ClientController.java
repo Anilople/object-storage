@@ -40,8 +40,7 @@ import software.amazon.awssdk.services.s3.model.ListBucketsResponse;
 @RequestMapping("/demo/S3Client")
 public class S3ClientController {
 
-  @Autowired
-  private S3Client s3Client;
+  @Autowired private S3Client s3Client;
 
   @GetMapping("/listBuckets")
   public ResponseEntity<Map<String, Instant>> listBuckets() {
@@ -53,5 +52,4 @@ public class S3ClientController {
     }
     return ResponseEntity.ok(map);
   }
-
 }
