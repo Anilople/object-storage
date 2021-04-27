@@ -20,8 +20,11 @@ package com.github.anilople.object.storage.demo.controller;
 
 import java.time.Instant;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
+import java.util.stream.Collectors;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -32,10 +35,14 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import software.amazon.awssdk.services.s3.S3Client;
 import software.amazon.awssdk.services.s3.model.Bucket;
+import software.amazon.awssdk.services.s3.model.DeleteBucketRequest;
 import software.amazon.awssdk.services.s3.model.ListBucketsResponse;
 import software.amazon.awssdk.services.s3.model.ListObjectsRequest;
 import software.amazon.awssdk.services.s3.model.ListObjectsResponse;
+import software.amazon.awssdk.services.s3.model.ListObjectsV2Request;
+import software.amazon.awssdk.services.s3.model.ListObjectsV2Response;
 import software.amazon.awssdk.services.s3.model.S3Object;
+import software.amazon.awssdk.services.s3.paginators.ListObjectsV2Iterable;
 
 /**
  * Demo for how to use {@link software.amazon.awssdk.services.s3.S3Client}.
@@ -79,5 +86,62 @@ public class S3ClientController {
     }
 
     return ResponseEntity.ok(map);
+  }
+
+  private boolean isEmptyBucket(Bucket bucket) {
+    ListObjectsV2Request listObjectsV2Request =
+        ListObjectsV2Request.builder()
+            .bucket(bucket.name())
+            // only need one key
+            .maxKeys(1)
+            .build();
+
+    ListObjectsV2Iterable iterable = this.s3Client.listObjectsV2Paginator(listObjectsV2Request);
+    for (ListObjectsV2Response response : iterable) {
+      if (response.keyCount() > 0) {
+        // exists key
+        return false;
+      }
+    }
+    return true;
+  }
+
+  /** @return true if delete succeed */
+  private boolean deleteBucket(String bucket) {
+    DeleteBucketRequest deleteBucketRequest = DeleteBucketRequest.builder().bucket(bucket).build();
+    try {
+      this.s3Client.deleteBucket(deleteBucketRequest);
+      return true;
+    } catch (Exception ignore) {
+
+    }
+    return false;
+  }
+
+  /**
+   * delete empty buckets.
+   *
+   * @return buckets are deleted
+   */
+  @GetMapping("delete/empty/buckets")
+  public ResponseEntity<Set<String>> deleteEmptyBuckets() {
+    ListBucketsResponse listBucketsResponse = this.s3Client.listBuckets();
+    List<Bucket> buckets = listBucketsResponse.buckets();
+
+    Set<String> emptyBuckets =
+        buckets.parallelStream()
+            .filter(this::isEmptyBucket)
+            .map(Bucket::name)
+            .collect(Collectors.toSet());
+
+    logger.info("find {} empty buckets. {}", emptyBuckets.size(), emptyBuckets);
+
+    // try to delete
+    Set<String> deletedBuckets =
+        emptyBuckets.parallelStream().filter(this::deleteBucket).collect(Collectors.toSet());
+
+    logger.info("delete {} buckets {}", deletedBuckets.size(), deletedBuckets);
+
+    return ResponseEntity.ok(deletedBuckets);
   }
 }
