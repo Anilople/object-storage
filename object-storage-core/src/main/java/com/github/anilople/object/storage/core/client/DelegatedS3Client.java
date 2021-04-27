@@ -227,7 +227,7 @@ import software.amazon.awssdk.services.s3.waiters.S3Waiter;
 /**
  * Use delegation pattern.
  *
- * @author wxq 
+ * @author wxq
  */
 public class DelegatedS3Client implements S3Client {
 
@@ -277,26 +277,30 @@ public class DelegatedS3Client implements S3Client {
 
   @Override
   public CopyObjectResponse copyObject(CopyObjectRequest copyObjectRequest)
-      throws ObjectNotInActiveTierErrorException, AwsServiceException, SdkClientException, S3Exception {
+      throws ObjectNotInActiveTierErrorException, AwsServiceException, SdkClientException,
+          S3Exception {
     return this.delegate.copyObject(copyObjectRequest);
   }
 
   @Override
   public CopyObjectResponse copyObject(Consumer<CopyObjectRequest.Builder> copyObjectRequest)
-      throws ObjectNotInActiveTierErrorException, AwsServiceException, SdkClientException, S3Exception {
+      throws ObjectNotInActiveTierErrorException, AwsServiceException, SdkClientException,
+          S3Exception {
     return this.delegate.copyObject(copyObjectRequest);
   }
 
   @Override
   public CreateBucketResponse createBucket(CreateBucketRequest createBucketRequest)
-      throws BucketAlreadyExistsException, BucketAlreadyOwnedByYouException, AwsServiceException, SdkClientException, S3Exception {
+      throws BucketAlreadyExistsException, BucketAlreadyOwnedByYouException, AwsServiceException,
+          SdkClientException, S3Exception {
     return this.delegate.createBucket(createBucketRequest);
   }
 
   @Override
   public CreateBucketResponse createBucket(
       Consumer<CreateBucketRequest.Builder> createBucketRequest)
-      throws BucketAlreadyExistsException, BucketAlreadyOwnedByYouException, AwsServiceException, SdkClientException, S3Exception {
+      throws BucketAlreadyExistsException, BucketAlreadyOwnedByYouException, AwsServiceException,
+          SdkClientException, S3Exception {
     return this.delegate.createBucket(createBucketRequest);
   }
 
@@ -331,16 +335,17 @@ public class DelegatedS3Client implements S3Client {
   public DeleteBucketAnalyticsConfigurationResponse deleteBucketAnalyticsConfiguration(
       DeleteBucketAnalyticsConfigurationRequest deleteBucketAnalyticsConfigurationRequest)
       throws AwsServiceException, SdkClientException, S3Exception {
-    return this.delegate
-        .deleteBucketAnalyticsConfiguration(deleteBucketAnalyticsConfigurationRequest);
+    return this.delegate.deleteBucketAnalyticsConfiguration(
+        deleteBucketAnalyticsConfigurationRequest);
   }
 
   @Override
   public DeleteBucketAnalyticsConfigurationResponse deleteBucketAnalyticsConfiguration(
-      Consumer<DeleteBucketAnalyticsConfigurationRequest.Builder> deleteBucketAnalyticsConfigurationRequest)
+      Consumer<DeleteBucketAnalyticsConfigurationRequest.Builder>
+          deleteBucketAnalyticsConfigurationRequest)
       throws AwsServiceException, SdkClientException, S3Exception {
-    return this.delegate
-        .deleteBucketAnalyticsConfiguration(deleteBucketAnalyticsConfigurationRequest);
+    return this.delegate.deleteBucketAnalyticsConfiguration(
+        deleteBucketAnalyticsConfigurationRequest);
   }
 
   @Override
@@ -371,17 +376,21 @@ public class DelegatedS3Client implements S3Client {
   }
 
   @Override
-  public DeleteBucketIntelligentTieringConfigurationResponse deleteBucketIntelligentTieringConfiguration(
-      DeleteBucketIntelligentTieringConfigurationRequest deleteBucketIntelligentTieringConfigurationRequest)
-      throws AwsServiceException, SdkClientException, S3Exception {
+  public DeleteBucketIntelligentTieringConfigurationResponse
+      deleteBucketIntelligentTieringConfiguration(
+          DeleteBucketIntelligentTieringConfigurationRequest
+              deleteBucketIntelligentTieringConfigurationRequest)
+          throws AwsServiceException, SdkClientException, S3Exception {
     return this.delegate.deleteBucketIntelligentTieringConfiguration(
         deleteBucketIntelligentTieringConfigurationRequest);
   }
 
   @Override
-  public DeleteBucketIntelligentTieringConfigurationResponse deleteBucketIntelligentTieringConfiguration(
-      Consumer<DeleteBucketIntelligentTieringConfigurationRequest.Builder> deleteBucketIntelligentTieringConfigurationRequest)
-      throws AwsServiceException, SdkClientException, S3Exception {
+  public DeleteBucketIntelligentTieringConfigurationResponse
+      deleteBucketIntelligentTieringConfiguration(
+          Consumer<DeleteBucketIntelligentTieringConfigurationRequest.Builder>
+              deleteBucketIntelligentTieringConfigurationRequest)
+          throws AwsServiceException, SdkClientException, S3Exception {
     return this.delegate.deleteBucketIntelligentTieringConfiguration(
         deleteBucketIntelligentTieringConfigurationRequest);
   }
@@ -390,16 +399,17 @@ public class DelegatedS3Client implements S3Client {
   public DeleteBucketInventoryConfigurationResponse deleteBucketInventoryConfiguration(
       DeleteBucketInventoryConfigurationRequest deleteBucketInventoryConfigurationRequest)
       throws AwsServiceException, SdkClientException, S3Exception {
-    return this.delegate
-        .deleteBucketInventoryConfiguration(deleteBucketInventoryConfigurationRequest);
+    return this.delegate.deleteBucketInventoryConfiguration(
+        deleteBucketInventoryConfigurationRequest);
   }
 
   @Override
   public DeleteBucketInventoryConfigurationResponse deleteBucketInventoryConfiguration(
-      Consumer<DeleteBucketInventoryConfigurationRequest.Builder> deleteBucketInventoryConfigurationRequest)
+      Consumer<DeleteBucketInventoryConfigurationRequest.Builder>
+          deleteBucketInventoryConfigurationRequest)
       throws AwsServiceException, SdkClientException, S3Exception {
-    return this.delegate
-        .deleteBucketInventoryConfiguration(deleteBucketInventoryConfigurationRequest);
+    return this.delegate.deleteBucketInventoryConfiguration(
+        deleteBucketInventoryConfigurationRequest);
   }
 
   @Override
@@ -425,7 +435,8 @@ public class DelegatedS3Client implements S3Client {
 
   @Override
   public DeleteBucketMetricsConfigurationResponse deleteBucketMetricsConfiguration(
-      Consumer<DeleteBucketMetricsConfigurationRequest.Builder> deleteBucketMetricsConfigurationRequest)
+      Consumer<DeleteBucketMetricsConfigurationRequest.Builder>
+          deleteBucketMetricsConfigurationRequest)
       throws AwsServiceException, SdkClientException, S3Exception {
     return this.delegate.deleteBucketMetricsConfiguration(deleteBucketMetricsConfigurationRequest);
   }
@@ -563,7 +574,8 @@ public class DelegatedS3Client implements S3Client {
 
   @Override
   public GetBucketAccelerateConfigurationResponse getBucketAccelerateConfiguration(
-      Consumer<GetBucketAccelerateConfigurationRequest.Builder> getBucketAccelerateConfigurationRequest)
+      Consumer<GetBucketAccelerateConfigurationRequest.Builder>
+          getBucketAccelerateConfigurationRequest)
       throws AwsServiceException, SdkClientException, S3Exception {
     return this.delegate.getBucketAccelerateConfiguration(getBucketAccelerateConfigurationRequest);
   }
@@ -590,7 +602,8 @@ public class DelegatedS3Client implements S3Client {
 
   @Override
   public GetBucketAnalyticsConfigurationResponse getBucketAnalyticsConfiguration(
-      Consumer<GetBucketAnalyticsConfigurationRequest.Builder> getBucketAnalyticsConfigurationRequest)
+      Consumer<GetBucketAnalyticsConfigurationRequest.Builder>
+          getBucketAnalyticsConfigurationRequest)
       throws AwsServiceException, SdkClientException, S3Exception {
     return this.delegate.getBucketAnalyticsConfiguration(getBucketAnalyticsConfigurationRequest);
   }
@@ -624,18 +637,20 @@ public class DelegatedS3Client implements S3Client {
 
   @Override
   public GetBucketIntelligentTieringConfigurationResponse getBucketIntelligentTieringConfiguration(
-      GetBucketIntelligentTieringConfigurationRequest getBucketIntelligentTieringConfigurationRequest)
+      GetBucketIntelligentTieringConfigurationRequest
+          getBucketIntelligentTieringConfigurationRequest)
       throws AwsServiceException, SdkClientException, S3Exception {
-    return this.delegate
-        .getBucketIntelligentTieringConfiguration(getBucketIntelligentTieringConfigurationRequest);
+    return this.delegate.getBucketIntelligentTieringConfiguration(
+        getBucketIntelligentTieringConfigurationRequest);
   }
 
   @Override
   public GetBucketIntelligentTieringConfigurationResponse getBucketIntelligentTieringConfiguration(
-      Consumer<GetBucketIntelligentTieringConfigurationRequest.Builder> getBucketIntelligentTieringConfigurationRequest)
+      Consumer<GetBucketIntelligentTieringConfigurationRequest.Builder>
+          getBucketIntelligentTieringConfigurationRequest)
       throws AwsServiceException, SdkClientException, S3Exception {
-    return this.delegate
-        .getBucketIntelligentTieringConfiguration(getBucketIntelligentTieringConfigurationRequest);
+    return this.delegate.getBucketIntelligentTieringConfiguration(
+        getBucketIntelligentTieringConfigurationRequest);
   }
 
   @Override
@@ -647,7 +662,8 @@ public class DelegatedS3Client implements S3Client {
 
   @Override
   public GetBucketInventoryConfigurationResponse getBucketInventoryConfiguration(
-      Consumer<GetBucketInventoryConfigurationRequest.Builder> getBucketInventoryConfigurationRequest)
+      Consumer<GetBucketInventoryConfigurationRequest.Builder>
+          getBucketInventoryConfigurationRequest)
       throws AwsServiceException, SdkClientException, S3Exception {
     return this.delegate.getBucketInventoryConfiguration(getBucketInventoryConfigurationRequest);
   }
@@ -661,7 +677,8 @@ public class DelegatedS3Client implements S3Client {
 
   @Override
   public GetBucketLifecycleConfigurationResponse getBucketLifecycleConfiguration(
-      Consumer<GetBucketLifecycleConfigurationRequest.Builder> getBucketLifecycleConfigurationRequest)
+      Consumer<GetBucketLifecycleConfigurationRequest.Builder>
+          getBucketLifecycleConfigurationRequest)
       throws AwsServiceException, SdkClientException, S3Exception {
     return this.delegate.getBucketLifecycleConfiguration(getBucketLifecycleConfigurationRequest);
   }
@@ -711,16 +728,17 @@ public class DelegatedS3Client implements S3Client {
   public GetBucketNotificationConfigurationResponse getBucketNotificationConfiguration(
       GetBucketNotificationConfigurationRequest getBucketNotificationConfigurationRequest)
       throws AwsServiceException, SdkClientException, S3Exception {
-    return this.delegate
-        .getBucketNotificationConfiguration(getBucketNotificationConfigurationRequest);
+    return this.delegate.getBucketNotificationConfiguration(
+        getBucketNotificationConfigurationRequest);
   }
 
   @Override
   public GetBucketNotificationConfigurationResponse getBucketNotificationConfiguration(
-      Consumer<GetBucketNotificationConfigurationRequest.Builder> getBucketNotificationConfigurationRequest)
+      Consumer<GetBucketNotificationConfigurationRequest.Builder>
+          getBucketNotificationConfigurationRequest)
       throws AwsServiceException, SdkClientException, S3Exception {
-    return this.delegate
-        .getBucketNotificationConfiguration(getBucketNotificationConfigurationRequest);
+    return this.delegate.getBucketNotificationConfiguration(
+        getBucketNotificationConfigurationRequest);
   }
 
   @Override
@@ -833,55 +851,65 @@ public class DelegatedS3Client implements S3Client {
   }
 
   @Override
-  public <ReturnT> ReturnT getObject(GetObjectRequest getObjectRequest,
+  public <ReturnT> ReturnT getObject(
+      GetObjectRequest getObjectRequest,
       ResponseTransformer<GetObjectResponse, ReturnT> responseTransformer)
-      throws NoSuchKeyException, InvalidObjectStateException, AwsServiceException, SdkClientException, S3Exception {
+      throws NoSuchKeyException, InvalidObjectStateException, AwsServiceException,
+          SdkClientException, S3Exception {
     return this.delegate.getObject(getObjectRequest, responseTransformer);
   }
 
   @Override
-  public <ReturnT> ReturnT getObject(Consumer<GetObjectRequest.Builder> getObjectRequest,
+  public <ReturnT> ReturnT getObject(
+      Consumer<GetObjectRequest.Builder> getObjectRequest,
       ResponseTransformer<GetObjectResponse, ReturnT> responseTransformer)
-      throws NoSuchKeyException, InvalidObjectStateException, AwsServiceException, SdkClientException, S3Exception {
+      throws NoSuchKeyException, InvalidObjectStateException, AwsServiceException,
+          SdkClientException, S3Exception {
     return this.delegate.getObject(getObjectRequest, responseTransformer);
   }
 
   @Override
   public GetObjectResponse getObject(GetObjectRequest getObjectRequest, Path destinationPath)
-      throws NoSuchKeyException, InvalidObjectStateException, AwsServiceException, SdkClientException, S3Exception {
+      throws NoSuchKeyException, InvalidObjectStateException, AwsServiceException,
+          SdkClientException, S3Exception {
     return this.delegate.getObject(getObjectRequest, destinationPath);
   }
 
   @Override
-  public GetObjectResponse getObject(Consumer<GetObjectRequest.Builder> getObjectRequest,
-      Path destinationPath)
-      throws NoSuchKeyException, InvalidObjectStateException, AwsServiceException, SdkClientException, S3Exception {
+  public GetObjectResponse getObject(
+      Consumer<GetObjectRequest.Builder> getObjectRequest, Path destinationPath)
+      throws NoSuchKeyException, InvalidObjectStateException, AwsServiceException,
+          SdkClientException, S3Exception {
     return this.delegate.getObject(getObjectRequest, destinationPath);
   }
 
   @Override
   public ResponseInputStream<GetObjectResponse> getObject(GetObjectRequest getObjectRequest)
-      throws NoSuchKeyException, InvalidObjectStateException, AwsServiceException, SdkClientException, S3Exception {
+      throws NoSuchKeyException, InvalidObjectStateException, AwsServiceException,
+          SdkClientException, S3Exception {
     return this.delegate.getObject(getObjectRequest);
   }
 
   @Override
   public ResponseInputStream<GetObjectResponse> getObject(
       Consumer<GetObjectRequest.Builder> getObjectRequest)
-      throws NoSuchKeyException, InvalidObjectStateException, AwsServiceException, SdkClientException, S3Exception {
+      throws NoSuchKeyException, InvalidObjectStateException, AwsServiceException,
+          SdkClientException, S3Exception {
     return this.delegate.getObject(getObjectRequest);
   }
 
   @Override
   public ResponseBytes<GetObjectResponse> getObjectAsBytes(GetObjectRequest getObjectRequest)
-      throws NoSuchKeyException, InvalidObjectStateException, AwsServiceException, SdkClientException, S3Exception {
+      throws NoSuchKeyException, InvalidObjectStateException, AwsServiceException,
+          SdkClientException, S3Exception {
     return this.delegate.getObjectAsBytes(getObjectRequest);
   }
 
   @Override
   public ResponseBytes<GetObjectResponse> getObjectAsBytes(
       Consumer<GetObjectRequest.Builder> getObjectRequest)
-      throws NoSuchKeyException, InvalidObjectStateException, AwsServiceException, SdkClientException, S3Exception {
+      throws NoSuchKeyException, InvalidObjectStateException, AwsServiceException,
+          SdkClientException, S3Exception {
     return this.delegate.getObjectAsBytes(getObjectRequest);
   }
 
@@ -954,7 +982,8 @@ public class DelegatedS3Client implements S3Client {
   }
 
   @Override
-  public <ReturnT> ReturnT getObjectTorrent(GetObjectTorrentRequest getObjectTorrentRequest,
+  public <ReturnT> ReturnT getObjectTorrent(
+      GetObjectTorrentRequest getObjectTorrentRequest,
       ResponseTransformer<GetObjectTorrentResponse, ReturnT> responseTransformer)
       throws AwsServiceException, SdkClientException, S3Exception {
     return this.delegate.getObjectTorrent(getObjectTorrentRequest, responseTransformer);
@@ -969,8 +998,9 @@ public class DelegatedS3Client implements S3Client {
   }
 
   @Override
-  public GetObjectTorrentResponse getObjectTorrent(GetObjectTorrentRequest getObjectTorrentRequest,
-      Path destinationPath) throws AwsServiceException, SdkClientException, S3Exception {
+  public GetObjectTorrentResponse getObjectTorrent(
+      GetObjectTorrentRequest getObjectTorrentRequest, Path destinationPath)
+      throws AwsServiceException, SdkClientException, S3Exception {
     return this.delegate.getObjectTorrent(getObjectTorrentRequest, destinationPath);
   }
 
@@ -1051,30 +1081,35 @@ public class DelegatedS3Client implements S3Client {
   public ListBucketAnalyticsConfigurationsResponse listBucketAnalyticsConfigurations(
       ListBucketAnalyticsConfigurationsRequest listBucketAnalyticsConfigurationsRequest)
       throws AwsServiceException, SdkClientException, S3Exception {
-    return this.delegate
-        .listBucketAnalyticsConfigurations(listBucketAnalyticsConfigurationsRequest);
+    return this.delegate.listBucketAnalyticsConfigurations(
+        listBucketAnalyticsConfigurationsRequest);
   }
 
   @Override
   public ListBucketAnalyticsConfigurationsResponse listBucketAnalyticsConfigurations(
-      Consumer<ListBucketAnalyticsConfigurationsRequest.Builder> listBucketAnalyticsConfigurationsRequest)
+      Consumer<ListBucketAnalyticsConfigurationsRequest.Builder>
+          listBucketAnalyticsConfigurationsRequest)
       throws AwsServiceException, SdkClientException, S3Exception {
-    return this.delegate
-        .listBucketAnalyticsConfigurations(listBucketAnalyticsConfigurationsRequest);
+    return this.delegate.listBucketAnalyticsConfigurations(
+        listBucketAnalyticsConfigurationsRequest);
   }
 
   @Override
-  public ListBucketIntelligentTieringConfigurationsResponse listBucketIntelligentTieringConfigurations(
-      ListBucketIntelligentTieringConfigurationsRequest listBucketIntelligentTieringConfigurationsRequest)
-      throws AwsServiceException, SdkClientException, S3Exception {
+  public ListBucketIntelligentTieringConfigurationsResponse
+      listBucketIntelligentTieringConfigurations(
+          ListBucketIntelligentTieringConfigurationsRequest
+              listBucketIntelligentTieringConfigurationsRequest)
+          throws AwsServiceException, SdkClientException, S3Exception {
     return this.delegate.listBucketIntelligentTieringConfigurations(
         listBucketIntelligentTieringConfigurationsRequest);
   }
 
   @Override
-  public ListBucketIntelligentTieringConfigurationsResponse listBucketIntelligentTieringConfigurations(
-      Consumer<ListBucketIntelligentTieringConfigurationsRequest.Builder> listBucketIntelligentTieringConfigurationsRequest)
-      throws AwsServiceException, SdkClientException, S3Exception {
+  public ListBucketIntelligentTieringConfigurationsResponse
+      listBucketIntelligentTieringConfigurations(
+          Consumer<ListBucketIntelligentTieringConfigurationsRequest.Builder>
+              listBucketIntelligentTieringConfigurationsRequest)
+          throws AwsServiceException, SdkClientException, S3Exception {
     return this.delegate.listBucketIntelligentTieringConfigurations(
         listBucketIntelligentTieringConfigurationsRequest);
   }
@@ -1083,16 +1118,17 @@ public class DelegatedS3Client implements S3Client {
   public ListBucketInventoryConfigurationsResponse listBucketInventoryConfigurations(
       ListBucketInventoryConfigurationsRequest listBucketInventoryConfigurationsRequest)
       throws AwsServiceException, SdkClientException, S3Exception {
-    return this.delegate
-        .listBucketInventoryConfigurations(listBucketInventoryConfigurationsRequest);
+    return this.delegate.listBucketInventoryConfigurations(
+        listBucketInventoryConfigurationsRequest);
   }
 
   @Override
   public ListBucketInventoryConfigurationsResponse listBucketInventoryConfigurations(
-      Consumer<ListBucketInventoryConfigurationsRequest.Builder> listBucketInventoryConfigurationsRequest)
+      Consumer<ListBucketInventoryConfigurationsRequest.Builder>
+          listBucketInventoryConfigurationsRequest)
       throws AwsServiceException, SdkClientException, S3Exception {
-    return this.delegate
-        .listBucketInventoryConfigurations(listBucketInventoryConfigurationsRequest);
+    return this.delegate.listBucketInventoryConfigurations(
+        listBucketInventoryConfigurationsRequest);
   }
 
   @Override
@@ -1104,7 +1140,8 @@ public class DelegatedS3Client implements S3Client {
 
   @Override
   public ListBucketMetricsConfigurationsResponse listBucketMetricsConfigurations(
-      Consumer<ListBucketMetricsConfigurationsRequest.Builder> listBucketMetricsConfigurationsRequest)
+      Consumer<ListBucketMetricsConfigurationsRequest.Builder>
+          listBucketMetricsConfigurationsRequest)
       throws AwsServiceException, SdkClientException, S3Exception {
     return this.delegate.listBucketMetricsConfigurations(listBucketMetricsConfigurationsRequest);
   }
@@ -1254,7 +1291,8 @@ public class DelegatedS3Client implements S3Client {
 
   @Override
   public PutBucketAccelerateConfigurationResponse putBucketAccelerateConfiguration(
-      Consumer<PutBucketAccelerateConfigurationRequest.Builder> putBucketAccelerateConfigurationRequest)
+      Consumer<PutBucketAccelerateConfigurationRequest.Builder>
+          putBucketAccelerateConfigurationRequest)
       throws AwsServiceException, SdkClientException, S3Exception {
     return this.delegate.putBucketAccelerateConfiguration(putBucketAccelerateConfigurationRequest);
   }
@@ -1281,7 +1319,8 @@ public class DelegatedS3Client implements S3Client {
 
   @Override
   public PutBucketAnalyticsConfigurationResponse putBucketAnalyticsConfiguration(
-      Consumer<PutBucketAnalyticsConfigurationRequest.Builder> putBucketAnalyticsConfigurationRequest)
+      Consumer<PutBucketAnalyticsConfigurationRequest.Builder>
+          putBucketAnalyticsConfigurationRequest)
       throws AwsServiceException, SdkClientException, S3Exception {
     return this.delegate.putBucketAnalyticsConfiguration(putBucketAnalyticsConfigurationRequest);
   }
@@ -1315,18 +1354,20 @@ public class DelegatedS3Client implements S3Client {
 
   @Override
   public PutBucketIntelligentTieringConfigurationResponse putBucketIntelligentTieringConfiguration(
-      PutBucketIntelligentTieringConfigurationRequest putBucketIntelligentTieringConfigurationRequest)
+      PutBucketIntelligentTieringConfigurationRequest
+          putBucketIntelligentTieringConfigurationRequest)
       throws AwsServiceException, SdkClientException, S3Exception {
-    return this.delegate
-        .putBucketIntelligentTieringConfiguration(putBucketIntelligentTieringConfigurationRequest);
+    return this.delegate.putBucketIntelligentTieringConfiguration(
+        putBucketIntelligentTieringConfigurationRequest);
   }
 
   @Override
   public PutBucketIntelligentTieringConfigurationResponse putBucketIntelligentTieringConfiguration(
-      Consumer<PutBucketIntelligentTieringConfigurationRequest.Builder> putBucketIntelligentTieringConfigurationRequest)
+      Consumer<PutBucketIntelligentTieringConfigurationRequest.Builder>
+          putBucketIntelligentTieringConfigurationRequest)
       throws AwsServiceException, SdkClientException, S3Exception {
-    return this.delegate
-        .putBucketIntelligentTieringConfiguration(putBucketIntelligentTieringConfigurationRequest);
+    return this.delegate.putBucketIntelligentTieringConfiguration(
+        putBucketIntelligentTieringConfigurationRequest);
   }
 
   @Override
@@ -1338,7 +1379,8 @@ public class DelegatedS3Client implements S3Client {
 
   @Override
   public PutBucketInventoryConfigurationResponse putBucketInventoryConfiguration(
-      Consumer<PutBucketInventoryConfigurationRequest.Builder> putBucketInventoryConfigurationRequest)
+      Consumer<PutBucketInventoryConfigurationRequest.Builder>
+          putBucketInventoryConfigurationRequest)
       throws AwsServiceException, SdkClientException, S3Exception {
     return this.delegate.putBucketInventoryConfiguration(putBucketInventoryConfigurationRequest);
   }
@@ -1352,7 +1394,8 @@ public class DelegatedS3Client implements S3Client {
 
   @Override
   public PutBucketLifecycleConfigurationResponse putBucketLifecycleConfiguration(
-      Consumer<PutBucketLifecycleConfigurationRequest.Builder> putBucketLifecycleConfigurationRequest)
+      Consumer<PutBucketLifecycleConfigurationRequest.Builder>
+          putBucketLifecycleConfigurationRequest)
       throws AwsServiceException, SdkClientException, S3Exception {
     return this.delegate.putBucketLifecycleConfiguration(putBucketLifecycleConfigurationRequest);
   }
@@ -1388,16 +1431,17 @@ public class DelegatedS3Client implements S3Client {
   public PutBucketNotificationConfigurationResponse putBucketNotificationConfiguration(
       PutBucketNotificationConfigurationRequest putBucketNotificationConfigurationRequest)
       throws AwsServiceException, SdkClientException, S3Exception {
-    return this.delegate
-        .putBucketNotificationConfiguration(putBucketNotificationConfigurationRequest);
+    return this.delegate.putBucketNotificationConfiguration(
+        putBucketNotificationConfigurationRequest);
   }
 
   @Override
   public PutBucketNotificationConfigurationResponse putBucketNotificationConfiguration(
-      Consumer<PutBucketNotificationConfigurationRequest.Builder> putBucketNotificationConfigurationRequest)
+      Consumer<PutBucketNotificationConfigurationRequest.Builder>
+          putBucketNotificationConfigurationRequest)
       throws AwsServiceException, SdkClientException, S3Exception {
-    return this.delegate
-        .putBucketNotificationConfiguration(putBucketNotificationConfigurationRequest);
+    return this.delegate.putBucketNotificationConfiguration(
+        putBucketNotificationConfigurationRequest);
   }
 
   @Override
@@ -1502,8 +1546,9 @@ public class DelegatedS3Client implements S3Client {
   }
 
   @Override
-  public PutObjectResponse putObject(Consumer<PutObjectRequest.Builder> putObjectRequest,
-      RequestBody requestBody) throws AwsServiceException, SdkClientException, S3Exception {
+  public PutObjectResponse putObject(
+      Consumer<PutObjectRequest.Builder> putObjectRequest, RequestBody requestBody)
+      throws AwsServiceException, SdkClientException, S3Exception {
     return this.delegate.putObject(putObjectRequest, requestBody);
   }
 
@@ -1514,8 +1559,9 @@ public class DelegatedS3Client implements S3Client {
   }
 
   @Override
-  public PutObjectResponse putObject(Consumer<PutObjectRequest.Builder> putObjectRequest,
-      Path sourcePath) throws AwsServiceException, SdkClientException, S3Exception {
+  public PutObjectResponse putObject(
+      Consumer<PutObjectRequest.Builder> putObjectRequest, Path sourcePath)
+      throws AwsServiceException, SdkClientException, S3Exception {
     return this.delegate.putObject(putObjectRequest, sourcePath);
   }
 
@@ -1603,14 +1649,16 @@ public class DelegatedS3Client implements S3Client {
 
   @Override
   public RestoreObjectResponse restoreObject(RestoreObjectRequest restoreObjectRequest)
-      throws ObjectAlreadyInActiveTierErrorException, AwsServiceException, SdkClientException, S3Exception {
+      throws ObjectAlreadyInActiveTierErrorException, AwsServiceException, SdkClientException,
+          S3Exception {
     return this.delegate.restoreObject(restoreObjectRequest);
   }
 
   @Override
   public RestoreObjectResponse restoreObject(
       Consumer<RestoreObjectRequest.Builder> restoreObjectRequest)
-      throws ObjectAlreadyInActiveTierErrorException, AwsServiceException, SdkClientException, S3Exception {
+      throws ObjectAlreadyInActiveTierErrorException, AwsServiceException, SdkClientException,
+          S3Exception {
     return this.delegate.restoreObject(restoreObjectRequest);
   }
 
@@ -1621,8 +1669,9 @@ public class DelegatedS3Client implements S3Client {
   }
 
   @Override
-  public UploadPartResponse uploadPart(Consumer<UploadPartRequest.Builder> uploadPartRequest,
-      RequestBody requestBody) throws AwsServiceException, SdkClientException, S3Exception {
+  public UploadPartResponse uploadPart(
+      Consumer<UploadPartRequest.Builder> uploadPartRequest, RequestBody requestBody)
+      throws AwsServiceException, SdkClientException, S3Exception {
     return this.delegate.uploadPart(uploadPartRequest, requestBody);
   }
 
@@ -1633,8 +1682,9 @@ public class DelegatedS3Client implements S3Client {
   }
 
   @Override
-  public UploadPartResponse uploadPart(Consumer<UploadPartRequest.Builder> uploadPartRequest,
-      Path sourcePath) throws AwsServiceException, SdkClientException, S3Exception {
+  public UploadPartResponse uploadPart(
+      Consumer<UploadPartRequest.Builder> uploadPartRequest, Path sourcePath)
+      throws AwsServiceException, SdkClientException, S3Exception {
     return this.delegate.uploadPart(uploadPartRequest, sourcePath);
   }
 

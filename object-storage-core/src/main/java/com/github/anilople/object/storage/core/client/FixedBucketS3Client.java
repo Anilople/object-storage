@@ -33,5 +33,4 @@ public final class FixedBucketS3Client extends DelegatedS3Client {
     super(delegate);
     this.bucket = bucket;
   }
-
 }

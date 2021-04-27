@@ -20,11 +20,8 @@ package com.github.anilople.object.storage.core.impl;
 
 import com.github.anilople.object.storage.core.service.ObjectStorageService;
 import software.amazon.awssdk.services.s3.S3Client;
-import software.amazon.awssdk.services.s3.model.PutObjectRequest;
 
-/**
- * @author wxq
- */
+/** @author wxq */
 public class DefaultObjectStorageServiceImpl implements ObjectStorageService {
 
   private final S3Client s3Client;

@@ -18,12 +18,9 @@
 
 package com.github.anilople.object.storage.core.service;
 
-import java.nio.file.Path;
 
-/**
- * @author wxq
- */
+/** @author wxq */
 public interface ObjectStorageService {
 
-//  putObject(String key, Path path);
+  //  putObject(String key, Path path);
 }
