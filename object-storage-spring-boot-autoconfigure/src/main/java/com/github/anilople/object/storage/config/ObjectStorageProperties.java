@@ -18,18 +18,18 @@
 
 package com.github.anilople.object.storage.config;
 
+import com.github.anilople.object.storage.constant.ObjectStorageConstants;
 import java.net.URI;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import software.amazon.awssdk.auth.credentials.AwsCredentials;
 import software.amazon.awssdk.regions.Region;
-import software.amazon.awssdk.regions.providers.DefaultAwsRegionProviderChain;
 
 /**
  * {@link ConfigurationProperties} for Object Storage.
  *
  * @author wxq
  */
-@ConfigurationProperties(prefix = "object.storage")
+@ConfigurationProperties(prefix = ObjectStorageConstants.PREFIX)
 public class ObjectStorageProperties {
 
   /** Enable Object Storage auto configure or not. */
@@ -40,7 +40,6 @@ public class ObjectStorageProperties {
    * Region#US_EAST_1}, i.e write <code>us-east-1</code> in config
    *
    * @see Region
-   * @see DefaultAwsRegionProviderChain
    */
   private String region;
 
