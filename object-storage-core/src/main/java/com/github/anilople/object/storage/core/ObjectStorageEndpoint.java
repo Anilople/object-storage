@@ -40,8 +40,6 @@ public class ObjectStorageEndpoint {
 
   @Override
   public String toString() {
-    return "ObjectStorageEndpoint{" +
-        "endpoint=" + endpoint +
-        '}';
+    return "ObjectStorageEndpoint{" + "endpoint=" + endpoint + '}';
   }
 }

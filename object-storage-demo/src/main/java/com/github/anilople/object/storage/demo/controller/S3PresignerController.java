@@ -35,8 +35,7 @@ import software.amazon.awssdk.services.s3.presigner.model.PresignedGetObjectRequ
 @RequestMapping("demo/S3Presigner")
 public class S3PresignerController {
 
-  @Autowired
-  private S3Presigner s3Presigner;
+  @Autowired private S3Presigner s3Presigner;
 
   @GetMapping("presignGetObject")
   public ResponseEntity<URL> presignGetObject(@RequestParam String bucket, @RequestParam String key) {
@@ -46,12 +45,14 @@ public class S3PresignerController {
         .build();
     Duration duration = Duration.ofDays(1);
 
-    GetObjectPresignRequest getObjectPresignRequest = GetObjectPresignRequest.builder()
-        .getObjectRequest(getObjectRequest)
-        .signatureDuration(duration)
-        .build();
+    GetObjectPresignRequest getObjectPresignRequest =
+        GetObjectPresignRequest.builder()
+            .getObjectRequest(getObjectRequest)
+            .signatureDuration(duration)
+            .build();
 
-    PresignedGetObjectRequest presignedGetObjectRequest = this.s3Presigner.presignGetObject(getObjectPresignRequest);
+    PresignedGetObjectRequest presignedGetObjectRequest =
+        this.s3Presigner.presignGetObject(getObjectPresignRequest);
     URL url = presignedGetObjectRequest.url();
     return ResponseEntity.ok(url);
   }
