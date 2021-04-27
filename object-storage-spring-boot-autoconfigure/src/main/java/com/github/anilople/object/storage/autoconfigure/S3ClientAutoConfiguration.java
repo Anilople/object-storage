@@ -27,6 +27,8 @@ import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import software.amazon.awssdk.auth.credentials.AwsCredentialsProvider;
+import software.amazon.awssdk.core.client.config.ClientOverrideConfiguration;
+import software.amazon.awssdk.http.SdkHttpClient;
 import software.amazon.awssdk.regions.Region;
 import software.amazon.awssdk.services.s3.S3Client;
 import software.amazon.awssdk.services.s3.S3ClientBuilder;
@@ -46,17 +48,28 @@ public class S3ClientAutoConfiguration {
 
   @Autowired private Optional<S3Configuration> s3ConfigurationOptional;
 
+  @Autowired private Optional<ClientOverrideConfiguration> clientOverrideConfigurationOptional;
+
+  @Autowired private Optional<SdkHttpClient> sdkHttpClientOptional;
+
+  @Autowired private Optional<SdkHttpClient.Builder> sdkHttpClientBuilderOptional;
+
   @Bean
   @ConditionalOnMissingBean
   public S3Client s3Client() {
-    final S3ClientBuilder s3ClientBuilder = S3Client.builder();
-    this.regionOptional.ifPresent(s3ClientBuilder::region);
+    final S3ClientBuilder builder = S3Client.builder();
+    this.regionOptional.ifPresent(builder::region);
     this.objectStorageEndpointOptional
         .map(ObjectStorageEndpoint::getEndpoint)
-        .ifPresent(s3ClientBuilder::endpointOverride);
-    this.awsCredentialsProviderOptional.ifPresent(s3ClientBuilder::credentialsProvider);
-    this.s3ConfigurationOptional.ifPresent(s3ClientBuilder::serviceConfiguration);
-    S3Client s3Client = s3ClientBuilder.build();
+        .ifPresent(builder::endpointOverride);
+    this.awsCredentialsProviderOptional.ifPresent(builder::credentialsProvider);
+    this.s3ConfigurationOptional.ifPresent(builder::serviceConfiguration);
+    this.clientOverrideConfigurationOptional.ifPresent(builder::overrideConfiguration);
+
+    this.sdkHttpClientOptional.ifPresent(builder::httpClient);
+    this.sdkHttpClientBuilderOptional.ifPresent(builder::httpClientBuilder);
+
+    S3Client s3Client = builder.build();
     return s3Client;
   }
 }
