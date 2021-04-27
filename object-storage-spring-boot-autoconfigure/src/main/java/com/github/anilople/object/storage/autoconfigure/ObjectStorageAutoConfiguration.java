@@ -87,5 +87,4 @@ public class ObjectStorageAutoConfiguration {
     LOGGER.debug("AwsCredentialsProvider from user's config. {}", awsCredentials);
     return StaticCredentialsProvider.create(awsCredentials);
   }
-
 }

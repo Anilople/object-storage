@@ -18,13 +18,10 @@
 
 package com.github.anilople.object.storage.autoconfigure.constant;
 
-/**
- * @author wxq
- */
+/** @author wxq */
 public interface ObjectStorageConstants {
 
   String PREFIX = "object.storage";
 
   String ENABLED = PREFIX + "." + "enabled";
-
 }
