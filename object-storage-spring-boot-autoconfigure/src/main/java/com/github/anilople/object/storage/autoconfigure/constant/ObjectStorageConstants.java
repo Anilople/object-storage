@@ -16,7 +16,7 @@
  *
  */
 
-package com.github.anilople.object.storage.constant;
+package com.github.anilople.object.storage.autoconfigure.constant;
 
 /**
  * @author wxq

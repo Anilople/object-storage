@@ -16,7 +16,7 @@
  *
  */
 
-package com.github.anilople.object.storage.config;
+package com.github.anilople.object.storage.autoconfigure;
 
 import com.github.anilople.object.storage.core.ObjectStorageEndpoint;
 import java.util.Optional;
@@ -28,14 +28,15 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import software.amazon.awssdk.auth.credentials.AwsCredentialsProvider;
 import software.amazon.awssdk.regions.Region;
+import software.amazon.awssdk.services.s3.S3Client;
+import software.amazon.awssdk.services.s3.S3ClientBuilder;
 import software.amazon.awssdk.services.s3.S3Configuration;
-import software.amazon.awssdk.services.s3.presigner.S3Presigner;
 
 /** @author wxq */
 @Configuration
-@ConditionalOnClass(S3Presigner.class)
+@ConditionalOnClass(S3Client.class)
 @AutoConfigureAfter(ObjectStorageAutoConfiguration.class)
-public class S3PresignerAutoConfiguration {
+public class S3ClientAutoConfiguration {
 
   @Autowired private Optional<Region> regionOptional;
 
@@ -47,15 +48,15 @@ public class S3PresignerAutoConfiguration {
 
   @Bean
   @ConditionalOnMissingBean
-  public S3Presigner s3Presigner() {
-    S3Presigner.Builder builder = S3Presigner.builder();
-    this.regionOptional.ifPresent(builder::region);
+  public S3Client s3Client() {
+    final S3ClientBuilder s3ClientBuilder = S3Client.builder();
+    this.regionOptional.ifPresent(s3ClientBuilder::region);
     this.objectStorageEndpointOptional
         .map(ObjectStorageEndpoint::getEndpoint)
-        .ifPresent(builder::endpointOverride);
-    this.awsCredentialsProviderOptional.ifPresent(builder::credentialsProvider);
-    this.s3ConfigurationOptional.ifPresent(builder::serviceConfiguration);
-    S3Presigner s3Presigner = builder.build();
-    return s3Presigner;
+        .ifPresent(s3ClientBuilder::endpointOverride);
+    this.awsCredentialsProviderOptional.ifPresent(s3ClientBuilder::credentialsProvider);
+    this.s3ConfigurationOptional.ifPresent(s3ClientBuilder::serviceConfiguration);
+    S3Client s3Client = s3ClientBuilder.build();
+    return s3Client;
   }
 }

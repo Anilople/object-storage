@@ -16,9 +16,9 @@
  *
  */
 
-package com.github.anilople.object.storage.config;
+package com.github.anilople.object.storage.autoconfigure;
 
-import com.github.anilople.object.storage.constant.ObjectStorageConstants;
+import com.github.anilople.object.storage.autoconfigure.constant.ObjectStorageConstants;
 import java.net.URI;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import software.amazon.awssdk.auth.credentials.AwsCredentials;

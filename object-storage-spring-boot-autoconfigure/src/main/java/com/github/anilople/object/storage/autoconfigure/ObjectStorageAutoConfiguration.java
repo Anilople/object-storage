@@ -16,9 +16,9 @@
  *
  */
 
-package com.github.anilople.object.storage.config;
+package com.github.anilople.object.storage.autoconfigure;
 
-import com.github.anilople.object.storage.constant.ObjectStorageConstants;
+import com.github.anilople.object.storage.autoconfigure.constant.ObjectStorageConstants;
 import com.github.anilople.object.storage.core.ObjectStorageEndpoint;
 import java.net.URI;
 import org.slf4j.Logger;
