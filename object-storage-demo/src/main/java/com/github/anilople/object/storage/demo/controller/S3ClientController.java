@@ -22,7 +22,6 @@ import java.time.Instant;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.Set;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -36,7 +35,6 @@ import software.amazon.awssdk.services.s3.model.Bucket;
 import software.amazon.awssdk.services.s3.model.ListBucketsResponse;
 import software.amazon.awssdk.services.s3.model.ListObjectsRequest;
 import software.amazon.awssdk.services.s3.model.ListObjectsResponse;
-import software.amazon.awssdk.services.s3.model.ListObjectsV2Request;
 import software.amazon.awssdk.services.s3.model.S3Object;
 
 /**
@@ -64,9 +62,10 @@ public class S3ClientController {
   }
 
   @GetMapping("listObjects")
-  public ResponseEntity<Map<String, Long>> listObjects(@RequestParam String bucket, @RequestParam(required = false) String prefix) {
+  public ResponseEntity<Map<String, Long>> listObjects(
+      @RequestParam String bucket, @RequestParam(required = false) String prefix) {
     ListObjectsRequest listObjectsRequest =
-    ListObjectsRequest.builder().bucket(bucket).prefix(prefix).build();
+        ListObjectsRequest.builder().bucket(bucket).prefix(prefix).build();
     ListObjectsResponse listObjectsResponse = this.s3Client.listObjects(listObjectsRequest);
 
     List<S3Object> s3Objects = listObjectsResponse.contents();

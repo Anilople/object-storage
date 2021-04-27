@@ -38,11 +38,9 @@ public class S3PresignerController {
   @Autowired private S3Presigner s3Presigner;
 
   @GetMapping("presignGetObject")
-  public ResponseEntity<URL> presignGetObject(@RequestParam String bucket, @RequestParam String key) {
-    GetObjectRequest getObjectRequest = GetObjectRequest.builder()
-        .bucket(bucket)
-        .key(key)
-        .build();
+  public ResponseEntity<URL> presignGetObject(
+      @RequestParam String bucket, @RequestParam String key) {
+    GetObjectRequest getObjectRequest = GetObjectRequest.builder().bucket(bucket).key(key).build();
     Duration duration = Duration.ofDays(1);
 
     GetObjectPresignRequest getObjectPresignRequest =
