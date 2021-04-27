@@ -32,13 +32,13 @@ import software.amazon.awssdk.services.s3.presigner.model.GetObjectPresignReques
 import software.amazon.awssdk.services.s3.presigner.model.PresignedGetObjectRequest;
 
 @RestController
-@RequestMapping("/demo/S3Presigner")
+@RequestMapping("demo/S3Presigner")
 public class S3PresignerController {
 
   @Autowired
   private S3Presigner s3Presigner;
 
-  @GetMapping("/presignGetObject")
+  @GetMapping("presignGetObject")
   public ResponseEntity<URL> presignGetObject(@RequestParam String bucket, @RequestParam String key) {
     GetObjectRequest getObjectRequest = GetObjectRequest.builder()
         .bucket(bucket)
