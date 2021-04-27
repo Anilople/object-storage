@@ -16,7 +16,7 @@
  *
  */
 
-package com.github.anilople.object.storage.core;
+package com.github.anilople.object.storage.core.config;
 
 import java.net.URI;
 

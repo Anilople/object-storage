@@ -18,7 +18,7 @@
 
 package com.github.anilople.object.storage.autoconfigure;
 
-import com.github.anilople.object.storage.core.ObjectStorageEndpoint;
+import com.github.anilople.object.storage.core.config.ObjectStorageEndpoint;
 import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.AutoConfigureAfter;
